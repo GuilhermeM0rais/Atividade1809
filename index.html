@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Média</title>
+</head>
+<body>
+    <h1>Calculadora de Média</h1>
+
+    <form id="formCalculadora">
+        <label for="nomeAluno">Nome do aluno:</label>
+        <input type="text" id="nomeAluno" required><br><br>
+
+        <label for="nomeProfessor">Nome do professor:</label>
+        <input type="text" id="nomeProfessor" required><br><br>
+
+        <label for="nota1">Nota 1:</label>
+        <input type="number" id="nota1" required><br><br>
+
+        <label for="nota2">Nota 2:</label>
+        <input type="number" id="nota2" required><br><br>
+
+        <label for="nota3">Nota 3:</label>
+        <input type="number" id="nota3" required><br><br>
+
+        <input type="button" value="Calcular Média" onclick="calcularMedia()">
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularMedia() {
+            var nomeAluno = document.getElementById("nomeAluno").value;
+            var nomeProfessor = document.getElementById("nomeProfessor").value;
+            var nota1 = parseFloat(document.getElementById("nota1").value);
+            var nota2 = parseFloat(document.getElementById("nota2").value);
+            var nota3 = parseFloat(document.getElementById("nota3").value);
+
+            var media = (nota1 + nota2 + nota3) / 3;
+
+            var situacao;
+            if (media <= 4.4) {
+                situacao = "retido";
+            } else if (media >= 4.5 && media < 6) {
+                situacao = "em recuperação";
+            } else {
+                situacao = "aprovado";
+            }
+
+            var resultado = "Nome do aluno: " + nomeAluno + "<br>";
+            resultado += "Nome do professor: " + nomeProfessor + "<br>";
+            resultado += "Média das notas: " + media.toFixed(2) + "<br>";
+            resultado += "Situação do aluno: " + situacao;
+
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>
